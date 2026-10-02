@@ -16,13 +16,14 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Setup Android SDK
-            - name: Extract Android project
-        run: |
-          unzip -q ExamMateMobileBuild.zip
+            - name: Setup Android SDK
         uses: android-actions/setup-android@v4
         with:
           accept-android-sdk-licenses: true
+
+      - name: Extract Android project
+        run: |
+          unzip -q ExamMateMobileBuild.zip
 
       - name: Build APK
         working-directory: ExamMateAndroid
