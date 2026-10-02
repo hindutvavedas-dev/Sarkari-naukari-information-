@@ -16,11 +16,10 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-
-      - - name: Setup Android SDK
-  uses: android-actions/setup-android@v4
-  with:
-    accept-android-sdk-licenses: true
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v4
+        with:
+          accept-android-sdk-licenses: true
 
       - name: Build APK
         working-directory: ExamMateAndroid
