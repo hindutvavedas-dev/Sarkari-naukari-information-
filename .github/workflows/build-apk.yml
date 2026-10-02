@@ -22,11 +22,17 @@ jobs:
         with:
           accept-android-sdk-licenses: true
 
+      - name: Extract Android project
+        run: |
+          unzip -q ExamMateMobileBuild.zip
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
       - name: Build APK
         working-directory: ExamMateAndroid
         run: |
-          chmod +x gradlew
-          ./gradlew assembleDebug
+          gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
