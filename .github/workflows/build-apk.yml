@@ -29,6 +29,12 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      - name: Fix JVM targets
+        working-directory: ExamMateAndroid/app
+        run: |
+          sed -i 's/JavaVersion.VERSION_1_8/JavaVersion.VERSION_17/g' build.gradle
+          sed -i 's/jvmTarget = ["'\'']1.8["'\'']/jvmTarget = "17"/g' build.gradle
+
       - name: Build APK
         working-directory: ExamMateAndroid
         run: |
